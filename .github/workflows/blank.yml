@@ -27,5 +27,5 @@ jobs:
       - name: Загрузка артефакта сборки
         uses: actions/upload-artifact@v4
         with:
-          название: app-debug.apk
-          путь: app/build/outputs/apk/debug/app-debug.apk
+          name: app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
