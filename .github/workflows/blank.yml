@@ -1,0 +1,31 @@
+name: CI
+
+on:
+ push:
+ branches: '*'
+  pull_request:
+ branches: '*'
+
+jobs:
+ build:
+ runs-on: ubuntu-latest
+
+    steps:
+ - name: Проверка кода
+        uses: actions/checkout@v3
+
+ - name: Настройка JDK 17
+        uses: actions/setup-java@v1
+        with:
+ java-version: 17
+
+ - name: Сборка
+        run: |
+ chmod +x ./gradlew
+ ./gradlew build
+
+ - name: Загрузка артефакта сборки
+        uses: actions/upload-artifact@v4
+        with:
+ название: app-debug.apk
+          путь: app/build/outputs/apk/debug/app-debug.apk
